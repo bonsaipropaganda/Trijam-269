@@ -20,8 +20,9 @@ func quick_delete():
 
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("bulb"):
-		win.emit()
-		print("win")
+		await get_tree().create_timer(1).timeout
+		if $Area3D.get_overlapping_bodies().size() > 0:
+			win.emit()
 
 
 func _on_body_entered(body):
