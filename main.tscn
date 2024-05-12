@@ -1,6 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ce35mjxhgma1e"]
+[gd_scene load_steps=26 format=3 uid="uid://ce35mjxhgma1e"]
 
-[ext_resource type="PackedScene" uid="uid://pcuvm57jojog" path="res://bulb.fbx" id="1_43k0j"]
+[ext_resource type="PackedScene" uid="uid://cuf6p53yknw3h" path="res://bulb.tscn" id="1_358wr"]
+[ext_resource type="Script" path="res://main.gd" id="1_vda7q"]
+[ext_resource type="FontFile" uid="uid://bd1n28447mgcj" path="res://kenney_kenney-fonts/Fonts/Kenney Mini Square.ttf" id="3_jmekj"]
+[ext_resource type="AudioStream" uid="uid://bvsr2pwa1xtt1" path="res://bg_noise.wav" id="4_uotpo"]
+[ext_resource type="AudioStream" uid="uid://dwcecs1sb6m35" path="res://shoot.wav" id="5_343uq"]
+[ext_resource type="AudioStream" uid="uid://dfv6vsk0ukuui" path="res://click.wav" id="6_gl228"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_shph3"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -29,10 +34,168 @@ points = PackedVector3Array(5.07937, 0.305556, 5.07738, -5.07937, -0.329365, -5.
 radius = 0.190379
 height = 1.09903
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vxd3m"]
-size = Vector3(0.183594, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g3o5"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_noogy"]
+bg_color = Color(0, 0, 0, 0.647059)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfk5l"]
+bg_color = Color(0, 0, 0, 0.321569)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5enbo"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1wg82"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_artt2"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq3tr"]
+bg_color = Color(0.752941, 0.752941, 0.752941, 1)
+
+[sub_resource type="Animation" id="Animation_d4d4k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/StartButton:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fvvgs"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/StartButton:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/ModulateHbox:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WinLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_w7fio"]
+resource_name = "win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/StartButton:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WinLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WinLabel:max_lines_visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WinLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o6xh7"]
+_data = {
+"RESET": SubResource("Animation_d4d4k"),
+"start": SubResource("Animation_fvvgs"),
+"win": SubResource("Animation_w7fio")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8st8a"]
+size = Vector3(7.80377, 0.57373, 5.614)
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_vda7q")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_sylvh")
@@ -51,31 +214,180 @@ surface_material_override/0 = SubResource("StandardMaterial3D_mjs82")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.62234, 0)
 shape = SubResource("ConvexPolygonShape3D_pl33f")
 
-[node name="Light" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.11941, 0)
-
-[node name="Root Scene" parent="Light" instance=ExtResource("1_43k0j")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, -0.296821, 0)
+[node name="Light" type="StaticBody3D" parent="." groups=["bulb"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.937038, -1.98215)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15998, 0)
 shape = SubResource("CapsuleShape3D_5ronl")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Light"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.186537, 0.195612, -0.00925449)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 2.7
+omni_shadow_mode = 0
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="OmniLight3D2" type="OmniLight3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159174, 0.195612, 0)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 2.7
+omni_shadow_mode = 0
 
-[node name="BoxMeshes" type="CSGBox3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32421, 0)
-operation = 2
+[node name="OmniLight3D4" type="OmniLight3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0101587, 0.290119, 0.187779)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 2.7
+omni_shadow_mode = 0
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="RigidBody3D/BoxMeshes"]
-transform = Transform3D(1, -2.98023e-08, 1.49012e-08, -2.98023e-08, 1, 0, -1.49012e-08, -2.98023e-08, 1, 0, 0, 0)
-operation = 2
+[node name="BulbMesh" parent="Light" instance=ExtResource("1_358wr")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, -0.52191, 0)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="RigidBody3D/BoxMeshes/CSGCombiner3D"]
-transform = Transform3D(1, 5.09317e-09, -1.86265e-09, 3.98722e-09, 1, 0, 1.77636e-15, 0, 1, -5.67008e-09, -0.190256, -5.67008e-09)
-size = Vector3(0.75, 0.75, 0.75)
+[node name="Walls" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.52615, 4.58642)
+mesh = SubResource("BoxMesh_c3vb3")
+skeleton = NodePath("../StaticBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_mjs82")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.408203, 1.32421, 0)
-shape = SubResource("BoxShape3D_vxd3m")
+[node name="Walls2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.52615, -4.68673)
+mesh = SubResource("BoxMesh_c3vb3")
+skeleton = NodePath("../StaticBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_mjs82")
+
+[node name="Walls3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -4.73361, 1.52615, -0.172042)
+mesh = SubResource("BoxMesh_c3vb3")
+skeleton = NodePath("../StaticBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_mjs82")
+
+[node name="Walls4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 4.72335, 1.52615, -0.172042)
+mesh = SubResource("BoxMesh_c3vb3")
+skeleton = NodePath("../StaticBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_mjs82")
+
+[node name="Ceiling" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.92664, 0)
+mesh = SubResource("BoxMesh_c3vb3")
+skeleton = NodePath("../StaticBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_mjs82")
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_right = 1152.0
+offset_bottom = 269.0
+theme_override_fonts/font = ExtResource("3_jmekj")
+theme_override_font_sizes/font_size = 100
+text = "Out"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 552.0
+offset_right = 1151.0
+offset_bottom = 694.0
+
+[node name="StartButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.5
+offset_top = -220.0
+offset_right = 111.5
+offset_bottom = -140.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_jmekj")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_1g3o5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_noogy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hfk5l")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5enbo")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1wg82")
+text = "Play"
+
+[node name="ModulateHbox" type="VBoxContainer" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = -542.0
+offset_right = 56.0
+offset_bottom = -498.0
+
+[node name="ResetLabel" type="Label" parent="Control/ModulateHbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jmekj")
+text = "R to reset"
+
+[node name="Tries" type="Label" parent="Control/ModulateHbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jmekj")
+text = "Tries:"
+
+[node name="Timer" type="Label" parent="Control/ModulateHbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jmekj")
+text = "3.3"
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -283.5
+offset_top = 37.0
+offset_right = 284.5
+offset_bottom = 75.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_artt2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pq3tr")
+show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o6xh7")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.40348, 0.310979)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0318298, -0.213135, 1.5962)
+shape = SubResource("BoxShape3D_8st8a")
+
+[node name="GameTimer" type="Timer" parent="."]
+
+[node name="WinLabel" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.0
+offset_top = -69.0
+offset_right = 260.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_jmekj")
+theme_override_font_sizes/font_size = 24
+text = "You won in blank seconds and blank tries."
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uotpo")
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_343uq")
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gl228")
+
+[connection signal="pressed" from="Control/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

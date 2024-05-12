@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cjix5xe8gn8ie"]
+
+[node name="BoxMeshes" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32421, 0)
+operation = 2
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, -2.98023e-08, 1.49012e-08, -2.98023e-08, 1, 0, -1.49012e-08, -2.98023e-08, 1, 0, 0, 0)
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 5.09317e-09, -1.86265e-09, 3.98722e-09, 1, 0, 1.77636e-15, 0, 1, -5.67008e-09, -0.190256, -5.67008e-09)
+size = Vector3(0.75, 0.75, 0.75)
