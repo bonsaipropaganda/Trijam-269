@@ -192,7 +192,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8st8a"]
-size = Vector3(7.80377, 0.57373, 5.614)
+size = Vector3(7.80377, 0.634033, 6.1815)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_vda7q")
@@ -356,7 +356,7 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.40348, 0.310979)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0318298, -0.213135, 1.5962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0318298, -0.182984, 1.31245)
 shape = SubResource("BoxShape3D_8st8a")
 
 [node name="GameTimer" type="Timer" parent="."]
