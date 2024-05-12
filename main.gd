@@ -16,9 +16,8 @@ func _process(delta):
 			charging = true
 		
 		if Input.is_action_just_released("charge"):
-			charging = false
-			shoot()
-			progress_bar.value = 0
+			release_charge()
+
 			
 		if Input.is_action_just_pressed("reset"):
 			reset()
@@ -27,6 +26,11 @@ func _process(delta):
 		if charging:
 			progress_bar.value += 1
 		
+
+func release_charge():
+	charging = false
+	shoot()
+	progress_bar.value = 0
 
 func reset():
 	for child in get_children():
@@ -51,6 +55,9 @@ func _on_win():
 
 func _on_start_button_pressed():
 	reset()
+	$Control/ProgressBar.value = 0
+	charging = false
+	
 	$click.play()
 	$AnimationPlayer.play("start")
 	$GameTimer.start()
